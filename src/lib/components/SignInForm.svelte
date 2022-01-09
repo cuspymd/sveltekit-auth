@@ -1,5 +1,5 @@
 <script>
-    import Input from '$lib/componets/Input.svelte';
+    import Input from '$lib/components/Input.svelte';
     import Button from '$lib/components/Button.svelte';
 
     import { createEventDispatcher } from 'svelte';

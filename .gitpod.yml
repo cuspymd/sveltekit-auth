@@ -12,3 +12,4 @@ vscode:
 
 
     - svelte.svelte-vscode
+    - bradlc.vscode-tailwindcss
