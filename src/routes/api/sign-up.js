@@ -1,5 +1,6 @@
 import { createSession, getUserByEmail, registerUser } from './_db';
 import { serialize } from 'cookie';
+import bcrypt from 'bcrypt';
 
 export async function post({ body: { email, password } }) {
     const user = await getUserByEmail(email);
@@ -13,9 +14,10 @@ export async function post({ body: { email, password } }) {
         };
     }
 
+    const saltRounds = 10;
     await registerUser({
         email,
-        password
+        password: await bcrypt.hash(password, saltRounds)
     });
 
     const { id } = await createSession(email);

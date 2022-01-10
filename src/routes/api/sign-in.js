@@ -1,10 +1,11 @@
 import { createSession, getUserByEmail } from './_db';
 import { serialize } from 'cookie';
+import bcrypt from 'bcrypt';
 
 export async function post({ body: { email, password } }) {
     const user = await getUserByEmail(email);
 
-    if (!user || user.password !== password) {
+    if (!user || !await bcrypt.compare(password, user.password)) {
         return {
             status: 401,
             body: {
