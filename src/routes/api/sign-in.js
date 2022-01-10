@@ -16,7 +16,7 @@ export async function post({ body: { email, password } }) {
     const { id } = await createSession(email);
     return {
         status: 200,
-        Headers: {
+        headers: {
             'Set-Cookie': serialize('session_id', id, {
                 path: '/',
                 httpOnly: true,
